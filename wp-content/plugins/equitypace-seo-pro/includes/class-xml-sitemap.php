@@ -1,0 +1,162 @@
+<?php
+/**
+ * Dynamic XML Sitemap Generator & Robots.txt Integration
+ *
+ * @package EquityPace_SEO
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+class EquityPace_SEO_Sitemap {
+
+	/**
+	 * Constructor
+	 */
+	public function __construct() {
+		// Intercept sitemap request
+		add_action( 'init', array( $this, 'register_sitemap_rewrite' ) );
+		add_action( 'template_redirect', array( $this, 'catch_sitemap_request' ), 1 );
+
+		// Filter robots.txt
+		add_filter( 'robots_txt', array( $this, 'filter_robots_txt' ), 99 );
+
+		// Auto-sync physical sitemap.xml on content changes or admin load
+		add_action( 'save_post', array( $this, 'write_sitemap_file' ) );
+		add_action( 'admin_init', array( $this, 'check_and_sync_sitemap' ) );
+	}
+
+	/**
+	 * Add rewrite rule for sitemap.xml
+	 */
+	public function register_sitemap_rewrite() {
+		add_rewrite_rule( '^sitemap\.xml$', 'index.php?equitypace_sitemap=1', 'top' );
+		add_rewrite_tag( '%equitypace_sitemap%', '([^&]+)' );
+	}
+
+	/**
+	 * Check and ensure sitemap file exists on disk
+	 */
+	public function check_and_sync_sitemap() {
+		$file = ABSPATH . 'sitemap.xml';
+		if ( ! file_exists( $file ) ) {
+			$this->write_sitemap_file();
+		}
+	}
+
+	/**
+	 * Write sitemap.xml file to disk
+	 */
+	public function write_sitemap_file() {
+		$xml = $this->build_xml_content();
+		@file_put_contents( ABSPATH . 'sitemap.xml', $xml );
+	}
+
+	/**
+	 * Catch request and serve XML sitemap dynamically
+	 */
+	public function catch_sitemap_request() {
+		$uri = $_SERVER['REQUEST_URI'] ?? '';
+		$is_sitemap = ( false !== strpos( $uri, 'sitemap.xml' ) ) || ( get_query_var( 'equitypace_sitemap' ) == 1 );
+
+		if ( ! $is_sitemap ) {
+			return;
+		}
+
+		$options = EquityPace_SEO::get_options();
+		if ( isset( $options['enable_sitemap'] ) && ! $options['enable_sitemap'] ) {
+			return;
+		}
+
+		$this->render_xml_sitemap();
+		exit;
+	}
+
+	/**
+	 * Build valid XML string
+	 */
+	public function build_xml_content() {
+		$site_url = home_url( '/' );
+		$xml  = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+		$xml .= '<?xml-stylesheet type="text/xsl" href="' . esc_url( EQUITYPACE_SEO_URL . 'assets/sitemap.xsl' ) . '"?>' . "\n";
+		$xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"' . "\n";
+		$xml .= '        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"' . "\n";
+		$xml .= '        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"' . "\n";
+		$xml .= '        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9' . "\n";
+		$xml .= '        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">' . "\n";
+
+		// 1. Homepage
+		$home_modified = gmdate( 'Y-m-d\TH:i:s+00:00', strtotime( get_lastpostmodified( 'GMT' ) ?: 'now' ) );
+		$xml .= "  <url>\n";
+		$xml .= "    <loc>" . esc_url( $site_url ) . "</loc>\n";
+		$xml .= "    <lastmod>" . esc_html( $home_modified ) . "</lastmod>\n";
+		$xml .= "    <changefreq>daily</changefreq>\n";
+		$xml .= "    <priority>1.0</priority>\n";
+		$xml .= "  </url>\n";
+
+		// 2. Published Pages (Calculators & Hub)
+		$pages = get_posts( array(
+			'post_type'   => 'page',
+			'post_status' => 'publish',
+			'numberposts' => 100,
+			'orderby'     => 'menu_order',
+			'order'       => 'ASC',
+		) );
+
+		foreach ( $pages as $page ) {
+			if ( $page->post_name === 'sample-page' ) {
+				continue;
+			}
+
+			// Exclude noindexed pages
+			$noindex = get_post_meta( $page->ID, '_equitypace_seo_noindex', true );
+			if ( $noindex === '1' || $noindex === 'yes' ) {
+				continue;
+			}
+
+			$permalink = get_permalink( $page->ID );
+			$modified  = gmdate( 'Y-m-d\TH:i:s+00:00', strtotime( $page->post_modified_gmt ?: $page->post_date_gmt ) );
+
+			$priority = ( $page->post_name === 'all-calculators' ) ? '0.8' : '0.9';
+			$changefreq = 'weekly';
+
+			$xml .= "  <url>\n";
+			$xml .= "    <loc>" . esc_url( $permalink ) . "</loc>\n";
+			$xml .= "    <lastmod>" . esc_html( $modified ) . "</lastmod>\n";
+			$xml .= "    <changefreq>" . esc_html( $changefreq ) . "</changefreq>\n";
+			$xml .= "    <priority>" . esc_html( $priority ) . "</priority>\n";
+
+			// Image tag for Google Image Search
+			$og_img = get_template_directory_uri() . '/assets/images/mortgage-payoff-og.jpg';
+			$xml .= "    <image:image>\n";
+			$xml .= "      <image:loc>" . esc_url( $og_img ) . "</image:loc>\n";
+			$xml .= "      <image:title>" . esc_html( $page->post_title ) . "</image:title>\n";
+			$xml .= "    </image:image>\n";
+
+			$xml .= "  </url>\n";
+		}
+
+		$xml .= "</urlset>\n";
+		return $xml;
+	}
+
+	/**
+	 * Output XML Sitemap directly
+	 */
+	public function render_xml_sitemap() {
+		header( 'Content-Type: text/xml; charset=utf-8' );
+		header( 'X-Robots-Tag: noindex, follow', true );
+		echo $this->build_xml_content();
+	}
+
+	/**
+	 * Append sitemap reference to robots.txt
+	 */
+	public function filter_robots_txt( $output ) {
+		$sitemap_url = home_url( '/sitemap.xml' );
+		$output .= "\n# XML Sitemap generated by EquityPace SEO Pro (Rank Math Engine)\n";
+		$output .= "Sitemap: " . esc_url( $sitemap_url ) . "\n";
+		return $output;
+	}
+}

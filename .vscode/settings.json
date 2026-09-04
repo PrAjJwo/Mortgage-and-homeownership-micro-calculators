@@ -1,0 +1,23 @@
+{
+  "files.exclude": {
+    "**/.git": true,
+    "**/.svn": true,
+    "**/.hg": true,
+    "**/CVS": true,
+    "**/.DS_Store": true,
+    "**/Thumbs.db": true,
+    "wp-admin": true,
+    "wp-includes": true,
+    "wp-activate.php": true,
+    "wp-blog-header.php": true,
+    "wp-comments-post.php": true,
+    "wp-cron.php": true,
+    "wp-load.php": true,
+    "wp-login.php": true,
+    "wp-mail.php": true,
+    "wp-settings.php": true,
+    "wp-signup.php": true,
+    "wp-trackback.php": true,
+    "xmlrpc.php": true
+  }
+}

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none">
+  <defs>
+    <linearGradient id="epGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#064e3b" />
+    </linearGradient>
+    <linearGradient id="epGrad2" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+  </defs>
+
+  <!-- Clean Shield Badge -->
+  <rect width="48" height="48" rx="12" fill="url(#epGrad1)" />
+
+  <!-- Modern Geometric Roofline Silhouette -->
+  <path d="M12 26L24 13L36 26" stroke="#ffffff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Ascending Payoff Acceleration Chevron -->
+  <path d="M18 31L24 23L30 31" stroke="url(#epGrad2)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Energy Node -->
+  <circle cx="24" cy="23" r="2.2" fill="#ffffff" />
+</svg>

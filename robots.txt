@@ -1,0 +1,14 @@
+# robots.txt for Mortgage Payoff Calculator
+# Directs search engine crawlers to essential content while protecting admin interfaces
+
+User-agent: *
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+Disallow: /wp-includes/
+Allow: /wp-includes/js/
+Allow: /wp-includes/css/
+Allow: /wp-content/themes/
+Allow: /wp-content/uploads/
+
+# Reference to XML Sitemap
+Sitemap: http://localhost:8080/sitemap.xml

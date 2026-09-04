@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://localhost:8080/wp-content/plugins/equitypace-seo-pro/assets/sitemap.xsl"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <url>
+    <loc>http://localhost:8080/</loc>
+    <lastmod>2026-09-03T11:18:20+00:00</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>http://localhost:8080/home-affordability-daycare/</loc>
+    <lastmod>2026-09-03T10:37:38+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>http://localhost:8080/wp-content/themes/mortgage-payoff/assets/images/mortgage-payoff-og.jpg</image:loc>
+      <image:title>Home Affordability Including Daycare Costs</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8080/rent-vs-buy/</loc>
+    <lastmod>2026-09-03T11:18:20+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>http://localhost:8080/wp-content/themes/mortgage-payoff/assets/images/mortgage-payoff-og.jpg</image:loc>
+      <image:title>Rent vs. Buy Calculator with Closing Costs</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8080/seller-net-proceeds/</loc>
+    <lastmod>2026-09-03T11:18:20+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>http://localhost:8080/wp-content/themes/mortgage-payoff/assets/images/mortgage-payoff-og.jpg</image:loc>
+      <image:title>Seller Net-Proceeds Calculator</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8080/house-flipping-profit/</loc>
+    <lastmod>2026-09-03T11:18:20+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>http://localhost:8080/wp-content/themes/mortgage-payoff/assets/images/mortgage-payoff-og.jpg</image:loc>
+      <image:title>House-Flipping Profit Calculator</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8080/mortgage-recast/</loc>
+    <lastmod>2026-09-03T11:18:20+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>http://localhost:8080/wp-content/themes/mortgage-payoff/assets/images/mortgage-payoff-og.jpg</image:loc>
+      <image:title>Mortgage Recast Calculator</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8080/heloc-payment/</loc>
+    <lastmod>2026-09-03T11:18:20+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>http://localhost:8080/wp-content/themes/mortgage-payoff/assets/images/mortgage-payoff-og.jpg</image:loc>
+      <image:title>HELOC Interest-Only Payment Calculator</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8080/home-replacement-cost/</loc>
+    <lastmod>2026-09-03T11:18:20+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>http://localhost:8080/wp-content/themes/mortgage-payoff/assets/images/mortgage-payoff-og.jpg</image:loc>
+      <image:title>Home Replacement-Cost Calculator</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8080/insurance-deductible-savings/</loc>
+    <lastmod>2026-09-03T11:18:20+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>http://localhost:8080/wp-content/themes/mortgage-payoff/assets/images/mortgage-payoff-og.jpg</image:loc>
+      <image:title>Insurance Deductible Savings Calculator</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>http://localhost:8080/all-calculators/</loc>
+    <lastmod>2026-09-03T11:18:20+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>http://localhost:8080/wp-content/themes/mortgage-payoff/assets/images/mortgage-payoff-og.jpg</image:loc>
+      <image:title>All Property &amp; Mortgage Calculators</image:title>
+    </image:image>
+  </url>
+</urlset>

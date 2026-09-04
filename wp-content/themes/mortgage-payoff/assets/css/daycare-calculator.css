@@ -1,0 +1,354 @@
+/**
+ * EquityPace — Home Affordability Including Daycare Costs Styles
+ * Supports both Light (Default) and Dark themes
+ */
+
+.daycare-affordability-section {
+  padding: 60px 0 80px;
+  background-color: transparent;
+  border-top: 1px solid var(--border-color);
+}
+
+.daycare-header {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 40px;
+}
+
+.daycare-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--primary-emerald);
+  background-color: var(--primary-emerald-light);
+  border: 1px solid var(--primary-emerald-border);
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+  margin-bottom: 10px;
+}
+
+.daycare-title {
+  font-size: clamp(24px, 3.5vw, 34px);
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+}
+
+.daycare-subtitle {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Daycare Sub Card */
+.daycare-sub-card {
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  margin-top: 12px;
+}
+
+.sub-card-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.sub-card-title svg {
+  color: var(--primary-emerald);
+}
+
+.kids-pills-selector {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  background-color: var(--bg-surface);
+  padding: 4px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+}
+
+.kids-pill-btn {
+  padding: 10px 4px;
+  font-family: var(--font-family);
+  font-size: 13px;
+  font-weight: 700;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.kids-pill-btn:hover {
+  color: var(--text-primary);
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.kids-pill-btn.active {
+  background: linear-gradient(135deg, var(--primary-emerald) 0%, var(--primary-emerald-hover) 100%);
+  color: #ffffff;
+  box-shadow: var(--glow-accent);
+}
+
+.total-daycare-indicator {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.total-daycare-indicator strong {
+  color: var(--accent-amber);
+}
+
+/* Daycare Gap Alert Box */
+.daycare-gap-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background-color: var(--accent-amber-light);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 24px;
+}
+
+.gap-icon {
+  font-size: 20px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.gap-content strong {
+  display: block;
+  font-size: 14px;
+  color: var(--accent-amber-text);
+  margin-bottom: 2px;
+}
+
+.gap-content p {
+  font-size: 12.5px;
+  color: var(--accent-amber-text);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Dual Side-by-Side Comparison Cards */
+.dual-affordability-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.afford-tile {
+  background: var(--bg-surface);
+  border-radius: var(--radius-sm);
+  padding: 20px 18px;
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+}
+
+.afford-tile.safe-limit-tile {
+  border-color: var(--primary-emerald-border);
+  box-shadow: 0 4px 16px rgba(5, 150, 105, 0.08);
+}
+
+.afford-tile.bank-limit-tile {
+  opacity: 0.9;
+}
+
+.tile-tag {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.safe-limit-tile .tile-tag {
+  color: var(--primary-emerald);
+}
+
+.tile-big-num {
+  font-size: clamp(22px, 2.5vw, 28px);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.1;
+  margin-bottom: 6px;
+  letter-spacing: -0.5px;
+}
+
+.tile-big-num.text-emerald {
+  color: var(--primary-emerald);
+}
+
+.tile-detail {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
+}
+
+.tile-payment {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  padding-top: 8px;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Monthly Cash Flow Visual Breakdown */
+.cashflow-visual-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 24px;
+}
+
+.cashflow-title-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cashflow-heading {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-primary);
+}
+
+.cashflow-income-tag {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary-emerald);
+  background-color: var(--primary-emerald-light);
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+}
+
+.cashflow-legend-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 14px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.cf-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cf-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Kindergarten Cash Flow Milestone Card */
+.kindergarten-milestone-card {
+  background-color: var(--primary-emerald-light);
+  border: 1.5px solid var(--primary-emerald-border);
+  border-radius: var(--radius-sm);
+  padding: 22px;
+}
+
+.k-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.k-icon {
+  font-size: 26px;
+  line-height: 1;
+}
+
+.k-title {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.k-subtitle {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+}
+
+.k-stat-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  background: var(--bg-surface);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.k-stat-label {
+  display: block;
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 2px;
+  font-weight: 600;
+}
+
+.k-stat-val {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.k-stat-val.text-emerald {
+  color: var(--primary-emerald);
+}
+
+.k-explanation {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .dual-affordability-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cashflow-legend-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .k-stat-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .kids-pills-selector {
+    grid-template-columns: 1fr 1fr;
+  }
+}
