@@ -85,5 +85,3 @@ C:\xampp\php\php.exe tests\run-all-tests.php
   ```
 
 ## License
-
-Add a license here if you intend this to be open source (MIT is a common default), or remove this section if it's private/portfolio-only.
